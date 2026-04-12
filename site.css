@@ -323,45 +323,87 @@ h1,
 }
 
 .sticker-one {
-  top: 17vh;
-  left: 23vw;
-  width: 90px;
-  transform: rotate(-9deg);
+  top: 18vh;
+  left: 18vw;
+  width: 82px;
+  transform: rotate(-11deg);
 }
 
 .sticker-two {
-  top: 19vh;
+  top: 20vh;
   right: 18vw;
-  width: 76px;
-  transform: rotate(7deg);
+  width: 60px;
+  transform: rotate(9deg);
 }
 
 .sticker-three {
-  bottom: 19vh;
-  right: 15vw;
-  width: 88px;
-  transform: rotate(-8deg);
+  bottom: 23vh;
+  left: 21vw;
+  width: 70px;
+  transform: rotate(-7deg);
 }
 
 .sticker-four {
-  top: 12vh;
-  right: 23vw;
-  width: 82px;
-  transform: rotate(10deg);
+  top: 14vh;
+  right: 28vw;
+  width: 74px;
+  transform: rotate(8deg);
 }
 
 .sticker-five {
-  bottom: 13vh;
-  left: 22vw;
-  width: 92px;
-  transform: rotate(6deg);
+  bottom: 22vh;
+  right: 18vw;
+  width: 80px;
+  transform: rotate(7deg);
 }
 
 .sticker-six {
-  top: 28vh;
-  left: 8vw;
-  width: 78px;
+  top: 35vh;
+  left: 7vw;
+  width: 64px;
   transform: rotate(-10deg);
+}
+
+.sticker-seven {
+  top: 18vh;
+  left: 18vw;
+  width: 74px;
+  transform: rotate(13deg);
+}
+
+.sticker-eight {
+  top: 24vh;
+  right: 16vw;
+  width: 60px;
+  transform: rotate(-8deg);
+}
+
+.sticker-nine {
+  bottom: 24vh;
+  left: 21vw;
+  width: 62px;
+  transform: rotate(9deg);
+}
+
+.sticker-ten {
+  top: 18vh;
+  right: 20vw;
+  width: 68px;
+  transform: rotate(-12deg);
+}
+
+.sticker-eleven {
+  bottom: 22vh;
+  right: 17vw;
+  width: 76px;
+  transform: rotate(4deg);
+}
+
+.sticker-twelve {
+  top: 33vh;
+  left: 6vw;
+  width: 62px;
+  transform: rotate(-11deg);
 }
 
 .desktop-dock {
@@ -579,11 +621,19 @@ h1,
   margin-top: 8px;
 }
 
+.education-layout .resume-card {
+  min-height: 188px;
+}
+
 .education-main {
   display: grid;
   grid-template-columns: 118px 1fr;
   gap: 18px;
   align-items: center;
+}
+
+.education-photo-card {
+  grid-template-columns: 118px 1fr;
 }
 
 .education-icon {
@@ -593,11 +643,37 @@ h1,
 }
 
 .books-icon {
-  max-width: 110px;
+  max-width: 118px;
 }
 
 .snoopy-icon {
   max-width: 92px;
+}
+
+.education-inline-icon {
+  width: 92px;
+  height: auto;
+  justify-self: center;
+}
+
+.education-photo-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.education-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.education-photo-copy {
+  display: grid;
+  align-content: center;
 }
 
 .skills-grid {
@@ -634,6 +710,12 @@ h1,
 
 .icon-money {
   width: 88px;
+  right: 10px;
+  bottom: 10px;
+}
+
+.icon-clapper {
+  width: 84px;
   right: 10px;
   bottom: 10px;
 }
@@ -689,6 +771,15 @@ h1,
   background: rgba(255, 255, 255, 0.66);
   border: 1px solid rgba(86, 78, 67, 0.12);
   font-size: 1.15rem;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.software-pills .pill:hover,
+.software-pills .pill:focus-visible {
+  transform: translateY(-2px) scale(1.04);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 16px rgba(76, 72, 64, 0.12);
+  outline: none;
 }
 
 .bullet-list {
@@ -706,6 +797,82 @@ h1,
   margin: 18px 0 0;
   color: var(--path-blue);
   font-size: 1.35rem;
+}
+
+.camera-page {
+  display: grid;
+  gap: 16px;
+}
+
+.camera-wrap {
+  display: grid;
+  place-items: center;
+}
+
+.camera-frame {
+  position: relative;
+  width: min(100%, 760px);
+  aspect-ratio: 734 / 477;
+}
+
+.camera-shell {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.camera-photo-stage {
+  position: absolute;
+  left: 8.5%;
+  top: 22.1%;
+  width: 57.8%;
+  height: 67.9%;
+  overflow: hidden;
+  border-radius: 6px;
+  background: white;
+}
+
+.camera-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateX(0);
+}
+
+.camera-photo.is-sliding {
+  animation: cameraSlide 340ms ease;
+}
+
+.camera-button {
+  position: absolute;
+  left: 66.6%;
+  top: 66.2%;
+  width: 10%;
+  height: 12%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.camera-note {
+  margin: 0;
+  text-align: center;
+  color: var(--path-blue);
+  font-family: var(--body-font);
+  font-size: 0.95rem;
+}
+
+@keyframes cameraSlide {
+  from {
+    opacity: 0.3;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 980px) {

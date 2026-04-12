@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Interests | Linda Gu</title>
+  <link rel="icon" type="image/png" href="assets/favicon-cards.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
@@ -24,31 +25,83 @@
             <span class="window-path">C:\LINDA\interests</span>
           </div>
         </header>
-        <div class="content-body">
-          <p class="section-kicker">outside of work</p>
-          <h1 class="page-title">Interests</h1>
-
-          <div class="card-grid">
-            <article class="interest-card">
-              <h2 class="card-title">What inspires me</h2>
-              <p>I like interfaces with personality, calm visual systems, strong color stories, and work that feels useful without feeling cold.</p>
-            </article>
-            <article class="interest-card">
-              <h2 class="card-title">Things I could put here later</h2>
-              <p>Favorite music, restaurants, books, sports, playlists, visual references, and small routines that make everyday life better.</p>
-            </article>
-            <article class="interest-card">
-              <h2 class="card-title">Current moodboard</h2>
-              <p>Grid paper, softer blues, cream backgrounds, folder motifs, playful sticker textures, and desktop references that still feel clean.</p>
-            </article>
-            <article class="interest-card">
-              <h2 class="card-title">More personal notes</h2>
-              <p>This page is a good place for the parts of you that do not fit neatly on a resume but still shape how you work and think.</p>
-            </article>
+        <div class="content-body camera-page">
+          <div class="camera-wrap">
+            <div class="camera-frame">
+              <img class="camera-shell" src="assets/camera-shell-pink.png" alt="">
+              <div class="camera-photo-stage">
+                <img id="camera-photo" class="camera-photo" src="" alt="Camera gallery image">
+              </div>
+              <button id="camera-next" class="camera-button" type="button" aria-label="Next photo"></button>
+            </div>
           </div>
+          <p class="camera-note">Click the space bar!</p>
         </div>
       </section>
     </div>
   </main>
+
+  <script>
+    const cameraPhotos = [
+      "assets/IMG_2503.jpg",
+      "assets/IMG_2049.jpg",
+      "assets/IMG_4041.JPG",
+      "assets/IMG_0036.JPG",
+      "assets/IMG_0472.jpg",
+      "assets/IMG_0110.JPG",
+      "assets/IMG_1949.JPG",
+      "assets/DSCN1733.JPG",
+      "assets/IMG_3877.jpg",
+      "assets/IMG_5991.jpeg",
+      "assets/IMG_1668.JPG",
+      "assets/IMG_8015.jpeg",
+      "assets/IMG_4427.jpeg",
+      "assets/IMG_7093.jpeg",
+      "assets/Screenshot 2026-04-12 at 11.31.49 AM.png",
+      "",
+      "",
+      "",
+      ""
+    ];
+
+    const fallbackPhoto = "assets/headshot-crop.jpg";
+    const usablePhotos = cameraPhotos.filter(Boolean);
+    const shuffledPhotos = usablePhotos
+      .map((photo) => ({ photo, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ photo }) => photo);
+    const photoList = shuffledPhotos.length ? shuffledPhotos : [fallbackPhoto];
+    const cameraPhoto = document.getElementById("camera-photo");
+    const cameraNext = document.getElementById("camera-next");
+    let photoIndex = 0;
+
+    function applyPhotoCrop(photoPath) {
+      cameraPhoto.style.objectPosition = "center center";
+    }
+
+    function renderCameraPhoto() {
+      cameraPhoto.classList.remove("is-sliding");
+      void cameraPhoto.offsetWidth;
+      const currentPhoto = photoList[photoIndex];
+      cameraPhoto.src = currentPhoto;
+      applyPhotoCrop(currentPhoto);
+      cameraPhoto.classList.add("is-sliding");
+    }
+
+    cameraNext.addEventListener("click", () => {
+      photoIndex = (photoIndex + 1) % photoList.length;
+      renderCameraPhoto();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.code === "Space") {
+        event.preventDefault();
+        photoIndex = (photoIndex + 1) % photoList.length;
+        renderCameraPhoto();
+      }
+    });
+
+    renderCameraPhoto();
+  </script>
 </body>
 </html>
